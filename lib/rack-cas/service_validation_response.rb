@@ -41,10 +41,11 @@ module RackCAS
       else
         xml.at('//serviceResponse/authenticationSuccess').children.each do |node|
           if node.is_a? Nokogiri::XML::Element
-            if !node.namespace || !node.namespace.prefix == 'cas'
-              # TODO: support JSON encoding
-              attrs[node.name] = YAML.load node.text.strip
-            end
+            attrs[node.name] = YAML.load node.text.strip
+            # if !node.namespace || !node.namespace.prefix == 'cas'
+            #   # TODO: support JSON encoding
+            #   attrs[node.name] = YAML.load node.text.strip
+            # end
           end
         end
       end
