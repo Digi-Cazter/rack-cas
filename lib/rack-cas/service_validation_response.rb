@@ -33,6 +33,8 @@ module RackCAS
 
       raise AuthenticationFailure, failure_message unless success?
 
+      puts xml
+
       # Jasig style
       if attr_node = xml.at('//serviceResponse/authenticationSuccess/attributes')
         attrs = parse_user_info(attr_node)
